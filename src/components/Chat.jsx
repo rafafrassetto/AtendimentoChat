@@ -1,33 +1,35 @@
-import React, { useState } from 'react'; // importa o React e o hook useState da biblioteca 'react'
-import RegistroChat from './RegistroChat'; // importa o componente RegistroChat
-import EntradaDeMensagem from './EntradaDeMensagem'; // importa o componente EntradaDeMensagem
+import React, { useState } from 'react';
+import ChatRecord from './ChatRecord';
+import MessageInput from './MessageInput';
+
+const ATTENDANT_NAME = 'Rafael';
 
 const Chat = () => {
-  // define um estado 'messages' com uma lista inicial de mensagens e uma função 'setMessages' para atualizar esse estado
   const [messages, setMessages] = useState([
-    { sender: 'atendimento', message: 'Olá!' },
-    { sender: 'atendimento', message: 'Tudo bem?' }
+    { sender: 'attendant', message: 'Hello!' },
+    { sender: 'attendant', message: 'How are you?' }
   ]);
 
-  // função para adicionar uma nova mensagem à lista de mensagens
-  const handleSendMessage = (message) => {
-    // atualiza o estado 'messages' adicionando a nova mensagem ao final da lista
-    setMessages([...messages, { sender: 'eu', message }]);
+  const addMessage = (message) => {
+    setMessages([...messages, { sender: 'me', message }]);
   };
-  
 
   return (
-    <div className="chat-mensagem">
-      <div className="titulo-chat">Atendimento Online</div>
-      <div className="mensagens">
-        {/* mapeia a lista de mensagens e renderiza um componente RegistroChat para cada uma */}
+    <div className="chat-message">
+      <div className="chat-title">Online Support</div>
+      <div className="messages">
         {messages.map((msg, index) => (
-          <RegistroChat key={index} sender={msg.sender} message={msg.message} />
+          <ChatRecord 
+            key={index} 
+            sender={msg.sender} 
+            message={msg.message} 
+            attendantName={ATTENDANT_NAME}
+          />
         ))}
       </div>
-      <EntradaDeMensagem onSendMessage={handleSendMessage} /> {/* componente de input para enviar novas mensagens */}
+      <MessageInput onSendMessage={addMessage} />
     </div>
   );
 };
 
-export default Chat; // exporta o componente Chat como padrão
+export default Chat;

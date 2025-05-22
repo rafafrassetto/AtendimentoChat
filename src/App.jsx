@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import ChatInicial from './pages/ChatInicial';
+import InitialChat from './pages/InitialChat';
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/chat" element={<ChatInicial />} />
+        <Route path="/chat" element={<InitialChat />} />
       </Routes>
     </Router>
   );

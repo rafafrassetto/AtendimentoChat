@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import RegistroChat from './RegistroChat';
 import EntradaDeMensagem from './EntradaDeMensagem';
+import { MessageBuilder } from '../helpers/MessageBuilder';
 
 /**
  * Componente principal do chat que gerencia e exibe mensagens
@@ -22,13 +23,14 @@ const Chat = () => {
    * @param {string} message
    */
   const handleSendMessage = (message) => {
-    const newMessage = {
-      id: messages.length + 1,
-      sender: 'eu',
-      message: message.trim(),
-    };
-    setMessages((prevMessages) => [...prevMessages, newMessage]);
-  };
+  const newMessage = new MessageBuilder()
+    .withId(messages.length + 1)
+    .from('eu')
+    .withText(message.trim())
+    .build();
+    
+  setMessages((prevMessages) => [...prevMessages, newMessage]);
+};
 
   return (
     <div className="chat-mensagem" data-testid="chat-container">

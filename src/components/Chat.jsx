@@ -1,33 +1,60 @@
-import React, { useState } from 'react'; // importa o React e o hook useState da biblioteca 'react'
-import RegistroChat from './RegistroChat'; // importa o componente RegistroChat
-import EntradaDeMensagem from './EntradaDeMensagem'; // importa o componente EntradaDeMensagem
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import RegistroChat from './RegistroChat';
+import EntradaDeMensagem from './EntradaDeMensagem';
+
+/**
+ * Componente principal do chat que gerencia e exibe mensagens
+ * @component
+ * @example
+ */
 
 const Chat = () => {
-  // define um estado 'messages' com uma lista inicial de mensagens e uma função 'setMessages' para atualizar esse estado
-  const [messages, setMessages] = useState([
-    { sender: 'atendimento', message: 'Olá!' },
-    { sender: 'atendimento', message: 'Tudo bem?' }
-  ]);
+  const initialMessages = [
+    { id: 1, sender: 'atendimento', message: 'Olá!' },
+    { id: 2, sender: 'atendimento', message: 'Tudo bem?' },
+  ];
 
-  // função para adicionar uma nova mensagem à lista de mensagens
+  const [messages, setMessages] = useState(initialMessages);
+
+  /**
+   * Adiciona uma nova mensagem à lista de mensagens
+   * @param {string} message
+   */
   const handleSendMessage = (message) => {
-    // atualiza o estado 'messages' adicionando a nova mensagem ao final da lista
-    setMessages([...messages, { sender: 'eu', message }]);
+    const newMessage = {
+      id: messages.length + 1,
+      sender: 'eu',
+      message: message.trim(),
+    };
+    setMessages((prevMessages) => [...prevMessages, newMessage]);
   };
-  
 
   return (
-    <div className="chat-mensagem">
+    <div className="chat-mensagem" data-testid="chat-container">
       <div className="titulo-chat">Atendimento Online</div>
       <div className="mensagens">
-        {/* mapeia a lista de mensagens e renderiza um componente RegistroChat para cada uma */}
-        {messages.map((msg, index) => (
-          <RegistroChat key={index} sender={msg.sender} message={msg.message} />
+        {messages.map((msg) => (
+          <RegistroChat
+            key={msg.id}
+            sender={msg.sender}
+            message={msg.message}
+          />
         ))}
       </div>
-      <EntradaDeMensagem onSendMessage={handleSendMessage} /> {/* componente de input para enviar novas mensagens */}
+      <EntradaDeMensagem onSendMessage={handleSendMessage} />
     </div>
   );
 };
 
-export default Chat; // exporta o componente Chat como padrão
+Chat.propTypes = {
+  initialMessages: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      sender: PropTypes.string.isRequired,
+      message: PropTypes.string.isRequired,
+    })
+  ),
+};
+
+export default Chat;

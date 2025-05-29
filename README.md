@@ -33,6 +33,6 @@ Digite `npm run dev` em seu terminal e abra o link `http://localhost:5173/`
 Implementada no builder de mensagens em Chat.jsx através da função handleSendMessage que retorna uma nova mensagem com estrutura consistente.
 
 
-## Demonstração da versão anterior as alterações realizadas
+## Demonstração da versão sem as alterações realizadas
 
 https://github.com/rafafrassetto/AtendimentoChat/assets/88680818/228f6fb7-7fe3-4d79-a8a2-d5a569d9ce59

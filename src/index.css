@@ -1,0 +1,146 @@
+body {
+  margin: 0;
+  background-size: cover;
+  height: 100vh;
+  background-color: #ecf0f1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-attachment: fixed;
+  font-family: Arial, sans-serif;
+}
+
+.titulo-chat {
+  text-align: center;
+  background-color: #020202;
+  color: #fff;
+  padding: 15px;
+  font-weight: bold;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.chat-mensagem {
+  border: 1px solid #000000;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  width: 500px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+}
+
+.mensagens {
+    height: 50vh;
+    max-height: calc(100% - 100px);
+    overflow-y: auto;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
+.message {
+  flex-direction: column;
+  margin-bottom: 15px;
+  display: flex;
+  
+}
+
+.atendimento, .eu {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.atendimento {
+  color: #000000;
+  text-align: left;
+}
+
+.eu {
+  color: #1aaa97;
+  text-align: right;
+}
+
+.atendente-message, .mensagem-emitente {
+  border: 1px solid #000000;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.atendente-message {
+  align-self: flex-start;
+  max-width: 70%;
+}
+
+.atendente-message + .atendente-message {
+  margin-top: 5px;
+}
+
+.mensagem-emitente + .mensagem-emitente {
+  margin-top: 5px;
+}
+
+.mensagem-emitente {
+  align-self: flex-end;
+  max-width: 70%;
+  background-color: #d3d3d3;
+}
+
+.chat-duvida {
+  padding: 10px;
+  border-bottom-left-radius: 8px;
+  background-color: #000000;
+  border-bottom-right-radius: 8px;
+  display: flex;
+}
+
+.chat-duvida input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #000000;
+  margin-right: 10px;
+}
+
+.chat-duvida button {
+  border: none;
+  padding: 10px;
+  background-color: #e61212;
+  color: white;
+  border-radius: 4px;
+
+}
+
+.chat-duvida button:hover {
+  background-color: #c0392b;
+}
+
+.tela-de-login input[type="text"] {
+  border: 2px solid #000000; 
+  padding: 10px; 
+  margin-top: 10px; 
+  border-radius: 5px; 
+  width: 100%;
+  box-sizing: border-box; 
+}
+
+.tela-de-login button {
+  margin-top: 10px; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  background-color: #000000; 
+  color: #fff; 
+  cursor: pointer; 
+}
+
+.mensagem-bem-vindo h1 {
+  border: 2px solid #000; 
+  padding: 10px; 
+  background-color: #000; 
+  color: #fff; 
+  border-radius: 5px; 
+  display: inline-block; 
+}

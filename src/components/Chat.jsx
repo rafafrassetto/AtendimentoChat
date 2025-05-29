@@ -1,35 +1,33 @@
-import React, { useState } from 'react';
-import ChatRecord from './ChatRecord';
-import MessageInput from './MessageInput';
-
-const ATTENDANT_NAME = 'Rafael';
+import React, { useState } from 'react'; // importa o React e o hook useState da biblioteca 'react'
+import RegistroChat from './RegistroChat'; // importa o componente RegistroChat
+import EntradaDeMensagem from './EntradaDeMensagem'; // importa o componente EntradaDeMensagem
 
 const Chat = () => {
+  // define um estado 'messages' com uma lista inicial de mensagens e uma função 'setMessages' para atualizar esse estado
   const [messages, setMessages] = useState([
-    { sender: 'attendant', message: 'Hello!' },
-    { sender: 'attendant', message: 'How are you?' }
+    { sender: 'atendimento', message: 'Olá!' },
+    { sender: 'atendimento', message: 'Tudo bem?' }
   ]);
 
-  const addMessage = (message) => {
-    setMessages([...messages, { sender: 'me', message }]);
+  // função para adicionar uma nova mensagem à lista de mensagens
+  const handleSendMessage = (message) => {
+    // atualiza o estado 'messages' adicionando a nova mensagem ao final da lista
+    setMessages([...messages, { sender: 'eu', message }]);
   };
+  
 
   return (
-    <div className="chat-message">
-      <div className="chat-title">Online Support</div>
-      <div className="messages">
+    <div className="chat-mensagem">
+      <div className="titulo-chat">Atendimento Online</div>
+      <div className="mensagens">
+        {/* mapeia a lista de mensagens e renderiza um componente RegistroChat para cada uma */}
         {messages.map((msg, index) => (
-          <ChatRecord 
-            key={index} 
-            sender={msg.sender} 
-            message={msg.message} 
-            attendantName={ATTENDANT_NAME}
-          />
+          <RegistroChat key={index} sender={msg.sender} message={msg.message} />
         ))}
       </div>
-      <MessageInput onSendMessage={addMessage} />
+      <EntradaDeMensagem onSendMessage={handleSendMessage} /> {/* componente de input para enviar novas mensagens */}
     </div>
   );
 };
 
-export default Chat;
+export default Chat; // exporta o componente Chat como padrão

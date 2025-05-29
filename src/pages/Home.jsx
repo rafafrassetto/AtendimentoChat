@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react'; // importa o React e o hook useState da biblioteca 'react'
+import { useNavigate } from 'react-router-dom'; // importa o hook useNavigate da biblioteca 'react-router-dom'
 
 const Home = () => {
-  const [name, setName] = useState('');
-  const navigate = useNavigate();
+  const [name, setName] = useState(''); // define um estado 'name' com um valor inicial vazio e uma função 'setName' para atualizar esse estado
+  const navigate = useNavigate(); // inicializa o hook useNavigate para navegação
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (name.trim()) {
-      navigate('/chat', { state: { name } });
+  const handleSubmit = (event) => {
+    event.preventDefault(); // previne o comportamento padrão do formulário de recarregar a página
+    if (name.trim()) { // verifica se o nome não está vazio após remover espaços em branco
+      navigate('/chat', { state: { name } }); // navega para a o arquivo '/chat' passando o estado 'name'
     }
   };
 

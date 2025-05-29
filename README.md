@@ -45,4 +45,3 @@ Implementada no builder de mensagens em Chat.jsx através da função handleSend
 ## Demonstração
 
 https://github.com/rafafrassetto/AtendimentoChat/assets/88680818/228f6fb7-7fe3-4d79-a8a2-d5a569d9ce59
-

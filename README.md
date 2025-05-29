@@ -1,5 +1,4 @@
 # ChangeLog - AtendimentoChat Refatoração
-
 # Equipe : Rafael Frassetto, João Rosso, João Acordi
 
 ## [1.0.0] - 2025

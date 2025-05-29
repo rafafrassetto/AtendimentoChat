@@ -13,16 +13,16 @@ const Home = () => {
   };
 
   return (
-    <div className="login-screen">
-      <h1>Support Queue</h1>
+    <div className="tela-de-login">
+      <h1>Fila de Atendimento</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Type your name"
+          onChange={(event) => setName(event.target.value)} // atualiza o estado 'name' com o valor do input
+          placeholder="Digite seu nome"
         />
-        <button type="submit">Enter</button>
+        <button type="submit">Entrar</button>
       </form>
     </div>
   );

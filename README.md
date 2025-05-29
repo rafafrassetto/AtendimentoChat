@@ -19,8 +19,13 @@ Sistema de chat para atendimento ao cliente com duas páginas:
 - Adicionado tratamento para casos edge (ex: location.state undefined)
 
 ## Como Executar
-1. `npm install`
-2. `npm run dev`
+
+1. Clone o repositório em sua máquina através do `git clone` ou baixe este código
+2. Após a instalação digite o comando `npm install` em seu terminal
+
+## Aplicação
+
+Digite `npm run dev` em seu terminal e abra o link `http://localhost:5173/`
 
 ## Scripts Úteis
 - `npm test` - Executa os testes

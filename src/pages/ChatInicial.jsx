@@ -1,17 +1,32 @@
-import React from 'react'; // importa o React da biblioteca 'react'
-import { useLocation } from 'react-router-dom'; // importa o hook useLocation da biblioteca 'react-router-dom'
-import Chat from '../components/Chat'; // importa o componente Chat
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Chat from '../components/Chat';
+
+/**
+ * Página inicial do chat que exibe boas-vindas e o componente Chat
+ * @component
+ * @example
+ */
 
 const ChatInicial = () => {
-  const location = useLocation(); // inicializa o hook useLocation para acessar o estado da navegação
-  const { name } = location.state; // extrai a propriedade 'name' do estado passado na navegação
+  const location = useLocation();
+  const { name } = location.state || { name: 'Usuário' };
 
   return (
-    <div className="mensagem-bem-vindo">
+    <div className="mensagem-bem-vindo" data-testid="welcome-message">
       <h1>Seja Bem vindo(a), {name}! Aguarde para ser atendido.</h1>
-      <Chat /> {/* Renderiza o componente Chat */}
+      <Chat />
     </div>
   );
 };
 
-export default ChatInicial; // exporta o componente ChatInicial como padrão
+ChatInicial.propTypes = {
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+  }),
+};
+
+export default ChatInicial;

@@ -1,17 +1,29 @@
-import React from 'react'; // importa o React da biblioteca 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-// define o componente funcional RegistroChat
+/**
+ * Componente que exibe uma única mensagem do chat
+ * @component
+ * @param {string} sender
+ * @param {string} message
+ * @example
+ */
 const RegistroChat = ({ sender, message }) => {
-  const isUser = sender === 'eu'; // verifica se o remetente da mensagem é o usuário atual
+  const isUser = sender === 'eu';
+  const senderName = isUser ? 'Eu' : 'Rafael';
+  const messageClass = isUser ? 'mensagem-emitente' : 'atendente-message';
+
   return (
-    <div className={`message ${isUser ? 'eu' : 'atendimento'}`}>
-      <span>{isUser ? 'Eu :' : 'Rafael:'}</span> {/* renderiza o nome do remetente da mensagem */}
-      <div className={isUser ? 'mensagem-emitente' : 'atendente-message'}>
-        {message} {/* renderiza o conteúdo da mensagem */}
-      </div>
+    <div className={`message ${sender}`} data-testid="chat-message">
+      <span>{senderName}:</span>
+      <div className={messageClass}>{message}</div>
     </div>
   );
 };
 
-export default RegistroChat; // exporta o componente RegistroChat como padrão
+RegistroChat.propTypes = {
+  sender: PropTypes.oneOf(['eu', 'atendimento']).isRequired,
+  message: PropTypes.string.isRequired,
+};
 
+export default RegistroChat;

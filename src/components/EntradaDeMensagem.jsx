@@ -1,54 +1,27 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
-/**
- * Componente para entrada de novas mensagens
- * @component
- * @param {function} onSendMessage
- * @example
- */
-
+// define o componente funcional EntradaDeMensagem
 const EntradaDeMensagem = ({ onSendMessage }) => {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState(''); // define um estado 'message' com um valor inicial vazio e uma função 'setMessage' para atualizar esse estado
 
-  /**
-   * Valida e envia a mensagem
-   * @returns {void}
-   */
-  
   const handleSend = () => {
-    if (isMessageValid(message)) {
-      onSendMessage(message);
-      setMessage('');
+    if (message.trim()) { // verifica se a mensagem não está vazia após remover espaços em branco
+      onSendMessage(message); // chama a função 'onSendMessage' passando a mensagem como argumento
+      setMessage(''); // limpa o campo de input
     }
   };
 
-  /**
-   * Verifica se a mensagem é válida
-   * @param {string} msg
-   * @returns {boolean}
-   */
-  const isMessageValid = (msg) => msg.trim().length > 0;
-
   return (
-    <div className="chat-duvida" data-testid="message-input">
+    <div className="chat-duvida">
       <input
         type="text"
         value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+        onChange={(event) => setMessage(event.target.value)} // atualiza o estado 'message' com o valor do input
         placeholder="Digite sua dúvida..."
-        aria-label="Digite sua mensagem"
       />
-      <button onClick={handleSend} disabled={!isMessageValid(message)}>
-        Enviar
-      </button>
+      <button onClick={handleSend}>Enviar</button>
     </div>
   );
-};
-
-EntradaDeMensagem.propTypes = {
-  onSendMessage: PropTypes.func.isRequired,
 };
 
 export default EntradaDeMensagem;
